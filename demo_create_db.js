@@ -1,4 +1,4 @@
-const mysql = require('mysql');
+ const mysql = require('mysql');
 
 const con = mysql.createConnection({
   host: "localhost",
@@ -6,11 +6,12 @@ const con = mysql.createConnection({
   password: "qwerty"
 });
 
-con.connect(function(err) {
+con.connect((err => {
   if (err) throw err;
   console.log("MySQL Server connected!");
-  con.query(sql, function (err, result) {
+  let sql = 'CREATE DATABASE mydb' 
+  con.query(sql, (err,result) =>{
     if (err) throw err;
-    console.log("Result: " + result);
+    console.log("Database mydb created");
   });
 });
